@@ -1,4 +1,3 @@
-package QuestoesPOO;
 public class Helicoptero {
      private int capacidade;
      private Boolean ligado;
@@ -39,7 +38,7 @@ public class Helicoptero {
      }
 
 
-    public void Entra() {
+    public void entra() {
         if (this.capacidade <= this.quantidadePessoas || this.altitude != 0) {
             System.out.println("Impossivel adicionar mais pessoas, Helicoptero cheio ou voando.");
         } else {
@@ -48,7 +47,7 @@ public class Helicoptero {
         }
     }
 
-    public void Sai() {
+    public void sai() {
         if (this.quantidadePessoas <= 0 || this.altitude !=0) {
             System.out.println("Impossivel remover mais pessoas, Helicoptero vazio ou voando.");
         } else {
@@ -57,7 +56,7 @@ public class Helicoptero {
         }
     }
 
-    public void Ligar() {
+    public void ligar() {
         if (this.ligado == true) {
             System.out.println("Impossivel ligar o Helicoptero, pois já está LIGADO.");
         } else {
@@ -66,7 +65,7 @@ public class Helicoptero {
         }
     }
 
-    public void Desligar() {
+    public void desligar() {
         if (this.ligado == false  && this.altitude >= 1) {
             System.out.println("Impossivel desligar o Helicoptero, pois já está DESLIGADO ou está voando.");
         } else {
@@ -75,7 +74,7 @@ public class Helicoptero {
         }
     }
 
-    public void Aterrisar() {
+    public void aterrisar() {
         if (altitude > 0) {
             System.out.println("Impossivel aterrisar, pois NÃO está no chão.");
         } else {
