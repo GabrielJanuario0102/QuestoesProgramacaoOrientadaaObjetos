@@ -50,7 +50,7 @@ public class Guerreiro {
 
     }
 
-    public void lutar(Guerreiro rival) {
+    public void lutarLaco(Guerreiro rival) {
         while ((this.energia > 0) && (rival.getEnergia() > 0)) {
             int chanceAtaque1 = atacar();
                 if (chanceAtaque1 == 1) {
@@ -93,6 +93,55 @@ public class Guerreiro {
                 System.out.println(this.toString());
                 System.out.println(rival.toString());
                 System.out.println("--------------------------");
+    }
+
+    public void lutarRecursao(Guerreiro rival) {
+        if (this.energia > 0 && rival.energia > 0) {
+            int chanceAtaque1 = atacar();
+            if (chanceAtaque1 == 1) {
+                    rival.decremento();
+                    System.out.println(String.format("%s ATACOU %s e ACERTOU.", this.nome, rival.getNome()));
+                    System.out.println(this.toString());
+                    System.out.println(rival.toString());
+                    System.out.println("--------------------------");
+                } else {
+                    System.out.println(String.format("%s ATACOU %s e ERROU.", this.nome, rival.getNome()));
+                    System.out.println(this.toString());
+                    System.out.println(rival.toString());
+                    System.out.println("--------------------------");
+                }
+
+                if (rival.getEnergia() == 0) {
+                    System.out.println("A luta acabou.");
+                    System.out.println(this.toString());
+                    System.out.println(rival.toString());
+                    System.out.println("--------------------------");
+                    return;
+                }
+
+                int chanceAtaque2 = rival.atacar();
+                if (chanceAtaque2 == 1) {
+                    decremento();
+                    System.out.println(String.format("%s ATACOU %s e ACERTOU.", rival.getNome(), this.nome));
+                    System.out.println(this.toString());
+                    System.out.println(rival.toString());
+                    System.out.println("--------------------------");
+                } else {
+                    System.out.println(String.format("%s ATACOU %s e ERROU.", rival.getNome(), this.nome));
+                    System.out.println(this.toString());
+                    System.out.println(rival.toString());
+                    System.out.println("--------------------------");
+                }
+
+                lutarRecursao(rival);
+            
+        } else {
+            System.out.println("A luta acabou.");
+            System.out.println(this.toString());
+            System.out.println(rival.toString());
+            System.out.println("--------------------------");
+            return;
+        }
     }
 
     public String toString() {
